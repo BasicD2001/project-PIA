@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/administrator">login</a></li>
+                <li><a href="/">home</a></li>
+                <li><a href="/spiskovi">spiskovi</a></li>
+                <li><a href="/admin2">zahtevi</a></li>
+                <li><a href="/dodavanje-dekoratera">dodavanje dekoratera</a></li>
+                <li><a href="/firma">dodavanje firmi</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <table>
+                <tr>
+                    <th>
+                        Korisnicko ime
+                    </th>
+                  
+                    <th>
+                        Ime
+                    </th>
+                    <th>
+                       Prezime
+                    </th>
+                    <th>
+                        Adresa
+                    </th>
+                    <th>
+                        Telefon
+                    </th>
+                    <th>
+                        Slika
+                    </th>
+                    <th>
+                        Kartica
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Promeni status
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        {{dekorater.korisnicko_ime}}
+                    </td>
+                   
+                    <td>
+                        {{dekorater.ime}}
+                    </td>
+                    <td>
+                        {{dekorater.prezime}}
+                    </td>
+                    <td>
+                        {{dekorater.adresa}}
+                    </td>
+                    <td>
+                        {{dekorater.telefon}}
+                    </td>
+                    <td>
+                        <img [src]="getUserImageUrl(dekorater.slika)" alt="Profilna slika korisnika">
+                    </td>
+                    <td>
+                        {{dekorater.kartica}}
+                    </td>
+                    <td>
+                        {{dekorater.status}}
+                    </td>
+                    <td>
+                        <button (click)="promeniStatus(dekorater.korisnicko_ime,dekorater.status)">Klikni me</button>
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="container2">
+            <table class="table2">
+                <tr>
+                    <td>
+                        <input type="text" [(ngModel)]="ime" name="ime">
+                    </td>
+                    <td>
+                        <button (click)="promeniIme()">Promeni ime?</button>
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" [(ngModel)]="prezime" name="prezime">
+                    </td>
+                    <td>
+                        <button (click)="promeniPrezime()">Promeni prezime?</button>
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" [(ngModel)]="imejl" name="imejl">
+                    </td>
+                    <td>
+                        <button (click)="promeniMejl()">Promeni imejl?</button>
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" [(ngModel)]="broj" name="broj">
+                    </td>
+                    <td>
+                        <button (click)="promeniBroj()">Promeni broj?</button>
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        <input type="number" [(ngModel)]="kartica" name="kartica">
+                    </td>
+                    <td>
+                        <button (click)="promeniKarticu()">Promeni karticu?</button>
+                    </td>  
+                </tr>
+              
+                <tr>
+                    <td>
+                        <input type="file" name="profilna_slika" (change)="onFileSelected($event)" class="input-field">
+                    </td>
+                    <td>
+                        <button (click)="promeniSliku()">Promeni sliku?</button>
+                    </td>  
+                </tr>
+                <tr [hidden]="!error">
+                    <td colspan="2">
+                        <p class="error-message2">{{error}}</p>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Vaša bašta.Sva prava zadržana.</p>
+    </footer>
+    
+</body>
+
+

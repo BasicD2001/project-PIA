@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+</head>
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/odrzavanje">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="table-container">
+            <h2>Završeni poslovi</h2>
+            <table class="data-table">
+                <tr>
+                    <th>Id</th>
+                    <th>Datum završetka</th>
+                    <th>Tip</th>
+                    <th>Status</th>
+                    <th>Broj bašta/fontana</th>
+                    <th>Zakazi servisiranje</th>     
+                </tr>
+                <tr *ngFor="let c of zavrseni">
+                    <td>{{c.id}}</td>
+                    <td>{{c.datumKraja}}</td>
+                    <td>{{c.tip}}</td>
+                    <td>{{c.status}}</td>
+                    <td>
+                        <div *ngIf="c.tip=='privatna'">b:{{c.brojBazena}}</div>
+                        <div *ngIf="c.tip=='restoran'">f:{{c.brojFontana}}</div>
+                    </td>
+                    <td >
+                        <button *ngIf="isMoreThanSixMonths(c.odrzavanje)" (click)="zakazi(c)">Zakazi</button>
+                        <p *ngIf="!isMoreThanSixMonths(c.odrzavanje)"></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>Poslovi u fazi održavanja ili čekaju majstore</h2>
+            <table class="data-table">
+                <tr>
+                    <th>Id</th>
+                    <th>Datum završetka</th>
+                    <th>Tip</th>
+                    <th>Status</th>
+                    <th>Broj bašta/fontana</th>       
+                </tr>
+                <tr *ngFor="let c of cekaju">
+                    <td>{{c.id}}</td>
+                    <td>{{c.datumKraja}}</td>
+                    <td>{{c.tip}}</td>
+                    <td>{{c.status}}</td>
+                    <td>
+                        <div *ngIf="c.tip=='privatna'">b:{{c.brojBazena}}</div>
+                        <div *ngIf="c.tip=='restoran'">f:{{c.brojFontana}}</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

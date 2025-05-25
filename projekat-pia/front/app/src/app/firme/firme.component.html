@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/odrzavanje">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="dropdown-container">
+            <label for="sortOptions" class="dropdown-label">Sortiraj:</label>
+            <select id="sortOptions" [(ngModel)]="selectedSortOption">
+                <option value="asc">Sortiraj rastuće(po nazivu)</option>
+                <option value="desc">Sortiraj opadajuće(po nazivu)</option>
+                <option value="ascAdr">Sortiraj rastuce(po adresi)</option>
+                <option value="descAdr">Sortiraj opadajuce(po adresi)</option>
+            </select>
+            <button (click)="sortiraj()">Sortiraj</button>
+        </div>
+
+        <div class="search-container">
+            <div class="search-field">
+                <label for="searchByName">Pretrazi po nazivu:</label>
+                <input type="text" id="searchByName" [(ngModel)]="searchName" placeholder="Unesite naziv">
+            </div>
+            <div class="search-field">
+                <label for="searchByAddress">Pretrazi po adresi:</label>
+                <input type="text" id="searchByAddress" [(ngModel)]="searchAddress" placeholder="Unesite adresu">
+            </div>
+            <button (click)="pretrazi()">Pretraži</button>
+            <button (click)="restartuj()">Restartuj</button>
+        </div>
+
+        <div class="firma-container">
+            <div *ngFor="let firma of firme" class="firma-card" (click)="detalji(firma.naziv)">
+                <div class="firma-info">
+                    <h2>{{firma.naziv}}</h2>
+                    <p class="firma-adresa">{{firma.adresa}}</p>
+                    <p class="firma-adresa">{{firma.ocena>0?firma.ocena:'neocenjeno'}}</p>
+                    <div class="rating">
+                        <div *ngFor="let _ of [].constructor(floor(firma.ocena)); let i = index">
+                          <img src="assets/zvezdana.png" alt="Star" class="star">
+                        </div>
+                      </div>
+                </div>
+                <div class="dekorateri-list">
+                    <div *ngFor="let dekorater of dekorateri" [hidden]="dekorater.firma != firma.naziv" class="dekorater-item">
+                        <p class="dekorater-ime">{{dekorater.ime}} {{dekorater.prezime}}</p>
+                    </div>
+                </div>
+               <ul>
+                <li *ngFor="let k of firma.komentari">
+                    {{k}}
+                </li>
+               </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Ova boja ostaje */
+    min-height: 100vh;
+}
+
+
+
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.job-request {
+    margin-bottom: 20px; /* Razmak između zahteva */
+    padding: 15px;
+    border: 1px solid #ddd; /* Dodana ivica */
+    border-radius: 5px;
+    background-color: #fafafa; /* Svetla pozadina za svaki zahtev */
+}
+
+.action-button {
+    padding: 10px 20px; /* Povećano */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px; /* Razmak između dugmadi */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+footer{
+    position: fixed;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 22px); /* Širina inputa */
+    margin-top: 10px; /* Razmak iznad inputa */
+}
+
+.error-message {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+h2 {
+    font-size: 24px; /* Veličina fonta za naslov */
+    margin-bottom: 20px; /* Razmak ispod naslova */
+    color: #333; /* Boja naslova */
+}

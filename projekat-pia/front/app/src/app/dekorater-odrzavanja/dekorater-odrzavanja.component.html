@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+</head>
+
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dekorater">Profil</a></li>
+                <li><a href="/dekorater-odrzavanja">Odrzavanja</a></li>
+                <li><a href="/dekorater-zakazivanja">Zakazivanja</a></li>
+                <li><a href="/dekorater-statistika">Statistika</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h2>Dostupni poslovi</h2>
+        <div class="job-request" *ngFor="let p of posloviZahtev">
+            <p>Datum pocetka: {{p.datumPocetka}}</p>
+            <p>Datum kraja: {{p.datumKraja}}</p>
+            <p>Status: {{p.status}}</p>
+            <p>Id:{{p.id}}</p>
+            <button class="action-button" (click)="prihvati(p)">Prihvati posao?</button>
+            <button class="action-button" (click)="odbij(p)">Odbij posao?</button>
+            <input type="text" placeholder="Komentar" [(ngModel)]="komentar">
+            <div *ngIf="error">
+                {{error}}
+            </div>
+        </div>
+    </main>
+    <main class="main-content">
+        <h2>Zavrseni poslovi dekoratera(potrebna potvrda slikom)</h2>
+        <div class="job-request" *ngFor="let p of posloviDekorater" [hidden]="p.slikaBaste">
+            <p>Datum pocetka: {{p.datumPocetka}}</p>
+            <p>Datum kraja: {{p.datumKraja}}</p>
+            <p>Status: {{p.status}}</p>
+            <p>Id:{{p.id}}</p>
+            <p><input type="file" name="profilna_slika" (change)="onFileSelected($event)" class="input-field"></p>
+            <p><button class="action-button" (click)="dodajSliku(p)">Dodaj sliku baste?</button></p>
+            
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

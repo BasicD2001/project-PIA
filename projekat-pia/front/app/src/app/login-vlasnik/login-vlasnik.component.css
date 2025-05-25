@@ -1,0 +1,120 @@
+
+
+/* Align the button within the form */
+button {
+  display: block;
+  margin: 20px auto; /* Center button horizontally */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add hover effect for the button */
+button:hover {
+  background-color: #0056b3;
+}
+
+footer{
+  position: fixed;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  min-height: 100vh; 
+
+}
+
+
+
+.slicica {
+  height: 30px; /* Low height for icon */
+  display: block;
+  margin: 10px auto; /* Center the icon */
+}
+
+/* Error message styling */
+.error-message2 {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px; /* Smaller font size */
+
+}
+
+.error-message{
+  color: #d9534f; /* Bootstrap red for error */
+    font-size: 14px;
+    padding: 10px;
+    background-color: #f2dede; /* Light red background */
+    border: 1px solid #d9534f; /* Red border */
+    border-radius: 4px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.center-content {
+  margin-top: 50px;
+  flex: 1; /* Osiguraj da main zauzme sav preostali prostor između header i footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box; /* Osiguraj da padding ne utiče na ukupnu širinu */
+  flex-direction: column
+}
+
+.container {
+  background-color: #ffffff; /* White background for the form container */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 5px;
+ 
+}
+
+table {
+  width: 100%; /* Širina tabele */
+  border-collapse: collapse; /* Spajanje ivica */
+  margin-top: 20px; /* Razmak iznad tabele */
+}
+
+th, td {
+  padding: 15px; /* Povećan razmak unutar ćelija */
+  text-align: left; /* Levo poravnanje */
+  border-bottom: 1px solid #dddddd; /* Svetla linija ispod ćelija */
+  transition: background-color 0.3s; /* Glatka promena boje pri pregledu */
+}
+
+th {
+  background-color: #2c3e50; /* Tamna pozadina zaglavlja */
+  color: white; /* Bela boja teksta */
+  font-weight: bold; /* Podebljan tekst */
+}
+
+td:hover {
+  background-color: #f1f1f1; /* Svetla boja pri pregledu */
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Svetla pozadina za parne redove */
+}
+
+tr:hover {
+  background-color: #e9ecef; /* Svetlija boja pri pregledu reda */
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/odrzavanje">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <section class="table-container">
+            <h2>Aktuelni</h2>
+            <table class="data-table">
+                <tr>
+                    <th>Datum izrade</th>
+                    <th>Firma</th>
+                    <th>Id</th>
+                    <th>Datum zakazivanja</th>
+                    <th>Otkazivanje posla</th>
+                </tr>
+                <tr *ngFor="let a of aktuelni">
+                    <td>{{a.datumPocetka}}</td>
+                    <td>{{a.firma}}</td>
+                    <td>{{a.id}}</td>
+                    <td>{{a.datumZakazivanja}}</td>
+                    <td>
+                        <div *ngIf="danasnjiDatum()<a.datumPocetka">
+                            <button (click)="otkazi(a)">Otkazi posao?</button>
+                        </div>
+                        <div *ngIf="danasnjiDatum()>=a.datumPocetka">
+                            Nemate mogucnost otkazati posao
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="table-container">
+            <h2>Završeni</h2>
+            <table class="data-table">
+                <tr>
+                    <th>Datum izrade</th>
+                    <th>Firma</th>
+                    <th>Komentar</th>
+                    <th>Ocena</th>
+                    <th>Akcija</th>
+                </tr>
+                <tr *ngFor="let z of zavrseni">
+                    <td>{{z.datumPocetka}}</td>
+                    <td>{{z.firma}}</td>
+                    <td>
+                        <div *ngIf="z.komentar">{{z.komentar}}</div>
+                        <div *ngIf="!z.komentar">Bez komentara</div>
+                    </td>
+                    <td>
+                        <div *ngIf="z.ocena != -1">{{z.ocena}}</div>
+                        <div *ngIf="z.ocena == -1">Neocenjeno</div>
+                    </td>
+                    <td>
+                        <button class="action-button"  (click)="azuriraj(z.id)" *ngIf="z.ocena == -1 || !z.komentar">Azuriraj komentar i/ili ocena</button>
+                        <p *ngIf="z.ocena != -1 && z.komentar">Komentar i ocena su u sistemu</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

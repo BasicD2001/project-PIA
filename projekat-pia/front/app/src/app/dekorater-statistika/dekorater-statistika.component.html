@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dekorater">Profil</a></li>
+                <li><a href="/dekorater-odrzavanja">Odrzavanja</a></li>
+                <li><a href="/dekorater-zakazivanja">Zakazivanja</a></li>
+                <li><a href="/dekorater-statistika">Statistika</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="chart-container">
+            <h2>Broj poslova po mesecima</h2>
+            <canvas id="myChart" width="300" height="150"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Raspodela poslova među dekoraterima</h2>
+            <canvas id="myPieChart" width="300" height="150"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2>Prosečan broj poslova po danima</h2>
+            <canvas id="myHistogram" width="300" height="150"></canvas>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

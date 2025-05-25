@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+  
+</head>
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/odrzavanje">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content"> <!-- Dodao main tag sa klasom -->
+        <h2>Zakazite odrzavanje baste</h2> <!-- Naslov za sekciju -->
+        <label for="datum">Datum dolaska majstora:</label>
+        <input type="date" id="datum" [(ngModel)]="datum"> <br>
+        <button class="action-button" (click)="potvrdi()">Potvrdi odrzavanje</button> <br>
+        <div class="error-message" *ngIf="error">{{error}}</div> <!-- Dodao div za poruke o grešci -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

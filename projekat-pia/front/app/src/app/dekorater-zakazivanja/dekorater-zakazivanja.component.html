@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+</head>
+
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dekorater">Profil</a></li>
+                <li><a href="/dekorater-odrzavanja">Odrzavanja</a></li>
+                <li><a href="/dekorater-zakazivanja">Zakazivanja</a></li>
+                <li><a href="/dekorater-statistika">Statistika</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <h2>Dostupni zahtevi za odrzavanjem</h2>
+        <div class="job-request" *ngFor="let p of odrzavanja">
+            <p>Datum pocetka: {{p.datumPocetka}}</p>
+            <p>Id posla:{{p.idPosao}}</p>
+            <button class="action-button" (click)="prihvati(p)">Prihvati odrzavanje?</button> 
+            <button class="action-button" (click)="odbij(p)">Odbij odrzavanje?</button>
+            <input type="date" placeholder="Unesite datum zavrsetka" [(ngModel)]="datum">
+            <div *ngIf="error" class="error-message ">
+                {{error}}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

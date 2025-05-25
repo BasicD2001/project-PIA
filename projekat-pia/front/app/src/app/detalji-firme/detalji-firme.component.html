@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/promena-lozinke">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="main-content">
+        <section class="firma-details">
+            <h2>{{firma.naziv}}</h2>
+            <p class="firma-adresa">{{firma.adresa}}</p>
+            <p class="firma-kontakt">{{firma.kontakt}}</p>
+        </section>
+        
+        <section class="map-container">
+            <div id="map"></div>
+        </section>
+        
+        <section class="usluge-list">
+            <h3>Usluge</h3>
+            <div *ngFor="let usluga of firma.usluge" class="usluga-item">
+                <p class="usluga-naziv">{{usluga.naziv}}</p>
+                <p class="usluga-cena">{{usluga.cena}}</p>
+            </div>
+        </section>
+
+        <section class="booking-form" [hidden]="hidden1">
+            <h3>Zakazivanje (step1)</h3>
+            <table>
+                <tr>
+                    <td><label for="datumPocetka">Datum izrade:</label></td>
+                    <td><input type="date" id="datumPocetka" [(ngModel)]="datumPocetka"></td>
+                </tr>
+                <tr>
+                    <td><label for="datumKraja">Datum završetka:</label></td>
+                    <td><input type="date" id="datumKraja" [(ngModel)]="datumKraja"></td>
+                </tr>
+                <tr>
+                    <td><label for="kvadraturaBaste">Kvadratura bašte:</label></td>
+                    <td><input type="number" id="kvadraturaBaste" [(ngModel)]="kvadraturaBaste"></td>
+                </tr>
+                <tr>
+                    <td><label for="tip">Tip bašte:</label></td>
+                    <td>
+                        <select id="tip" name="basta" [(ngModel)]="tip">
+                            <option value="privatna">Privatna bašta</option>
+                            <option value="restoran">Restoran</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="step1()">Predji na sledeci korak</button>
+                    </td>
+                </tr>
+                <tr [hidden]="!greska">
+                    <td colspan="2">
+                        <p class="error-message">{{greska}}</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="booking-form" [hidden]="hidden2">
+            <h3>Privatna basta (step2)</h3>
+            <table>
+                <tr>
+                    <td><label >Kvadratura pod bazenom:</label></td>
+                    <td><input type="number"  [(ngModel)]="bazen"></td>
+                </tr>
+                <tr>
+                    <td><label >Kvadratura pod zelenilom:</label></td>
+                    <td><input type="number" [(ngModel)]="zelenilo"></td>
+                </tr>
+                <tr>
+                    <td><label >Kvadratura opremljena lezaljkama i stolovima:</label></td>
+                    <td><input type="number"  [(ngModel)]="lezaljke"></td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Dodatni zahtevi(opciono):</label>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="opis">
+                    </td>
+                </tr>
+                <tr *ngFor="let usluga of firma.usluge;let i=index">
+                    <td>
+                        <label>Usluga: {{usluga.naziv}}</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" [(ngModel)]="checkboxovi[i]">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="file" id="fileUpload" accept=".json" (change)="onFileSelected($event)" />
+                    </td>
+                    <td>
+                        <button (click)="loadJson()">Učitaj JSON fajl</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="drawGarden()">Nacrtaj</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <canvas id="gardenCanvas" width="500" height="500" style="border:1px solid #000;"></canvas>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">
+                        <button (click)="step2Basta()">Sacuvaj prijavu</button>
+                    </td>
+                </tr>
+                <tr [hidden]="!greska1">
+                    <td colspan="2">
+                        <p class="error-message">{{greska1}}</p>
+                </td>
+                </tr>
+            </table>
+        </section>
+        <section class="booking-form" [hidden]="hidden3">
+            <h3>Restoran (step2)</h3>
+            <table>
+                <tr>
+                    <td><label >Kvadratura pod fontanom:</label></td>
+                    <td><input type="number"  [(ngModel)]="fontana"></td>
+                </tr>
+                <tr>
+                    <td><label >Kvadratura pod zelenilom:</label></td>
+                    <td><input type="number" [(ngModel)]="zelenilo"></td>
+                </tr>
+                <tr>
+                    <td><label >Broj stolova i stolica:</label></td>
+                    <td><input type="number"  [(ngModel)]="stolovi"></td>
+                </tr>
+                <tr>
+                    <td>
+                       <label>Dodatni zahtevi(opciono):</label>
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="opis">
+                    </td>
+                </tr>
+                <tr *ngFor="let usluga of firma.usluge;let i=index">
+                    <td>
+                        <label>Usluga: {{usluga.naziv}}</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" [(ngModel)]="checkboxovi[i]">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <input type="file" id="fileUpload" accept=".json" (change)="onFileSelected($event)" />
+                    </td>
+                    <td>
+                        <button (click)="loadJson()">Učitaj JSON fajl</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="drawGarden2()">Nacrtaj</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <canvas id="gardenCanvas2" width="500" height="500" style="border:1px solid #000;"></canvas>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2">
+                        <button (click)="step2Restoran()">Sacuvaj prijavu</button>
+                    </td>
+                </tr>
+                <tr [hidden]="!greska1">
+                    <td colspan="2">
+                        <p class="error-message">{{greska2}}</p>
+                </td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

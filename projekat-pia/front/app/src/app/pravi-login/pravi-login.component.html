@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+   
+</head>
+
+<body>
+    <header>
+        <h1>Vaša Bašta, Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="/praviLogin">Prijava</a></li>
+                <li><a href="/login-vlasnik">Registracija</a></li>
+                <li><a href="/promena-lozinke">Promena Lozinke</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="center-content">
+        <div class="container">
+            <table class="login-table">
+                <tr>
+                    <td class="label-cell">
+                        Korisnicko ime:
+                    </td>
+                    <td>
+                        <input type="text" name="korisnicko_ime" [(ngModel)]="korisnicko_ime" class="input-field">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        Lozinka:
+                    </td>
+                    <td>
+                        <input type="password" name="lozinka" [(ngModel)]="lozinka" class="input-field">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="error-message2">
+                            {{error}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="button-cell">
+                        <button (click)="login()" class="btn">Prijavi se</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+
+</html>

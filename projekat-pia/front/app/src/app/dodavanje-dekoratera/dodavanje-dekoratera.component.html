@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+
+</head>
+
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/administrator">login</a></li>
+                <li><a href="/">home</a></li>
+                <li><a href="/spiskovi">spiskovi</a></li>
+                <li><a href="/admin2">zahtevi</a></li>
+                <li><a href="/dodavanje-dekoratera">dodavanje dekoratera</a></li>
+                <li><a href="/firma">dodavanje firmi</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <table class="table2">
+                <tr>
+                    <td>Korisničko ime:</td>
+                    <td><input type="text" name="korisnicko_ime" [(ngModel)]="korisnicko_ime"></td>
+                </tr>
+                <tr>
+                    <td>Lozinka:</td>
+                    <td><input type="text" name="lozinka" [(ngModel)]="lozinka" (ngModelChange)="proveriLozinku()"></td>
+                </tr>
+                <tr *ngIf="!validnaLozinka && lozinka">
+                    <td colspan="2" class="error-message">Lozinka mora biti u formatu: najmanje 6, najviše 10 karaktera,
+                        jedno veliko slovo, tri mala slova, jedan broj i jedan specijalni karakter, i mora počinjati
+                        slovom.</td>
+                </tr>
+                <tr>
+                    <td>Ime:</td>
+                    <td><input type="text" name="ime" [(ngModel)]="ime"></td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td><input type="text" name="prezime" [(ngModel)]="prezime"></td>
+                </tr>
+                <tr>
+                    <td>Firma:</td>
+                    <td><input type="text" name="firma" [(ngModel)]="firma"></td>
+                </tr>
+                <tr>
+                    <td>Imejl:</td>
+                    <td><input type="text" name="imejl" [(ngModel)]="imejl"></td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>Pol:</td>
+                    <td>
+                        <select id="gender" name="pol" [(ngModel)]="pol" required>
+                            <option value="M">M</option>
+                            <option value="Ž">Ž</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td><input type="text" name="adresa" [(ngModel)]="adresa"></td>
+                </tr>
+                <tr>
+                    <td>Kontakt telefon:</td>
+                    <td><input type="text" name="kontakt_telefon" [(ngModel)]="kontakt_telefon"></td>
+                </tr>
+                <tr>
+                    <td>Profilna slika:</td>
+                    <td><input type="file" name="profilna_slika" (change)="onFileSelected($event)"></td>
+                </tr>
+                <tr>
+                    <td>Broj kreditne kartice:</td>
+                    <td class="input-container">
+                        <input type="number" name="broj_kreditne_kartice" [(ngModel)]="broj_kreditne_kartice" 
+                            (ngModelChange)="proveriKarticu(broj_kreditne_kartice)">
+                    
+                        <div *ngIf="karticaIkonica" class="card-icon-container">
+                            <img [src]="karticaIkonica" alt="Tip kartice" class="slicica">
+                        </div>
+                    </td>
+                    
+                </tr>
+                <tr [hidden]="!prazno">
+                    <td colspan="2" class="error-message2">{{prazno}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="nema">
+                        <button (click)="saveDekorater()">SAVE</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Vaša bašta.Sva prava zadržana.</p>
+    </footer>
+
+</body>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Vaša Bašta,Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="/praviLogin">Prijava</a></li>
+                <li><a href="/login-vlasnik">Registracija</a></li>
+                <li><a href="/promena-lozinke">Promena Lozinke</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <table>
+                <tr>
+                    <td>
+                        Korisnicko ime:
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="ime">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stara lozinka:</td>
+                    <td>
+                        <input type="text" [(ngModel)]="staraLozinka" name="staraLozinka" (ngModelChange)="proveriLozinku1()">
+                    </td>
+                </tr>
+                <tr *ngIf="!validnastaraLozinka && staraLozinka">
+                    <td colspan="2" class="error-message">Lozinka mora biti u formatu: najmanje 6,
+                        najviše 10 karaktera, jedno veliko slovo, tri mala slova
+                        , jedan broj i jedan specijalni karakter, i mora počinjati slovom.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nova lozinka:</td>
+                    <td>
+                        <input type="text" [(ngModel)]="lozinka" name="lozinka" (ngModelChange)="proveriLozinku2()">
+                    </td>
+                </tr>
+                <tr *ngIf="!validnaLozinka && lozinka">
+                    <td colspan="2" class="error-message">Lozinka mora biti u formatu: najmanje 6,
+                        najviše 10 karaktera, jedno veliko slovo, tri mala slova
+                        , jedan broj i jedan specijalni karakter, i mora počinjati slovom.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ponovi lozinku:</td>
+                    <td>
+                        <input type="text" [(ngModel)]="ponovljena" name="ponovljena" (ngModelChange)="proveriLozinku3()">
+                    </td>
+                </tr>
+                <tr *ngIf="!validnaPonovljena && ponovljena">
+                    <td colspan="2" class="error-message">Lozinka mora biti u formatu: najmanje 6,
+                        najviše 10 karaktera, jedno veliko slovo, tri mala slova
+                        , jedan broj i jedan specijalni karakter, i mora počinjati slovom.
+                    </td>
+                </tr>
+                <tr *ngIf="error" class="error-message">
+                    <td colspan="2">{{error}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="changePassword()">Promeni lozinku</button>
+                    </td>
+                </tr>
+               
+            </table>
+        </div>
+    </div>
+
+    
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta.Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

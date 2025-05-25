@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh; 
+
+}
+
+footer{
+    position: fixed;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Visina preostalog prostora */
+    margin-top: 50px; /* Dodatna margina sa vrha */
+}
+
+.container {
+    max-width: 500px; /* Povećana maksimalna širina forme */
+    width: 100%;
+    padding: 30px; /* Povećan padding za više prostora unutar kontejnera */
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.label-cell {
+    text-align: right;
+    padding-right: 10px; /* Razmak desno */
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Razmak između input polja */
+}
+
+.btn {
+    width: 100%; /* Puni širina dugmeta */
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Tamnija plava na hover */
+}
+
+.error-message2 {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center; /* Centriranje poruke o grešci */
+}

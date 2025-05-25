@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    min-height: 100vh; /* Osigurava da body zauzima punu visinu prozora */
+
+}
+
+.table-container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+footer{
+    position: fixed
+}
+
+
+
+.data-table,
+.action-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-table th,
+.data-table td,
+.action-table th,
+.action-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.data-table td {
+    background-color: #f9f9f9;
+}
+
+.data-table tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
+
+.action-table td {
+    background-color: #ffffff;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.rating-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.star {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.star-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.error-message {
+    color: #dc3545; /* Crvena boja za greške */
+    background-color: #f8d7da; /* Svetlo crvena pozadina */
+    border: 1px solid #f5c6cb; /* Ivica u svetlo crvenoj boji */
+    border-radius: 4px; /* Zaobljeni uglovi */
+    padding: 10px; /* Unutrašnji razmak */
+    font-size: 14px; /* Veličina fonta */
+    margin: 0; /* Ukloni marginu oko p taga */
+    text-align: center; /* Centriranje teksta */
+    font-weight: bold; /* Boldovan tekst */
+}
+

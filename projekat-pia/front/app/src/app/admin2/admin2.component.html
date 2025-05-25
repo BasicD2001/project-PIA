@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/administrator">login</a></li>
+                <li><a href="/">home</a></li>
+                <li><a href="/spiskovi">spiskovi</a></li>
+                <li><a href="/admin2">zahtevi</a></li>
+                <li><a href="/dodavanje-dekoratera">dodavanje dekoratera</a></li>
+                <li><a href="/firma">dodavanje firmi</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <table>
+                <tr>
+                    <th>Korisničko ime</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Prihvati</th>
+                    <th>Odbij</th>
+                </tr>
+                <tr *ngFor="let vlasnik of vlasnici;let i=index">
+                    <td>
+                        {{vlasnik.korisnicko_ime}}
+                    </td>
+                    <td>
+                        {{vlasnik.ime}}
+                    </td>
+                    <td>
+                        {{vlasnik.prezime}}
+                    </td>
+                    <td>
+                        <button (click)="prihvati(vlasnik.korisnicko_ime)">Klikni ovde</button>
+                    </td>
+                    <td>
+                        <button (click)="odbij(vlasnik.korisnicko_ime)">Klikni ovde</button>
+                    </td>
+                
+            </table>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Vaša bašta.Sva prava zadržana.</p>
+    </footer>
+</body>

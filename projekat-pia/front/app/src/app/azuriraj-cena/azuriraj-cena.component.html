@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/promena-lozinke">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Datum izrade</th>
+                        <th>Firma</th>
+                        <th>Id</th>
+                        <th>Komentar</th>
+                        <th>Ocena</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{posao.datumPocetka}}</td>
+                        <td>{{posao.firma}}</td>
+                        <td>{{posao.id}}</td>
+                        <td>
+                            <div *ngIf="posao.komentar">{{posao.komentar}}</div>
+                            <div *ngIf="!posao.komentar">Bez komentara</div>
+                        </td>
+                        <td>
+                            <div *ngIf="posao.ocena != -1">{{posao.ocena}}</div>
+                            <div *ngIf="posao.ocena == -1">Neocenjeno</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="action-table">
+                <tbody>
+                    <tr *ngIf="!posao.komentar">
+                        <td>
+                            <input type="text" [(ngModel)]="komentar" placeholder="Unesite komentar">
+                        </td>
+                        <td>
+                            <button (click)="azurirajKomentar()">Zabelezi komentar</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="posao.ocena==-1">
+                        <td>
+                            <div class="rating-container">
+                                <div *ngFor="let star of stars; let i = index" 
+                                     class="star"
+                                     (click)="setRating(i + 1)">
+                                    <img src="assets/azuriranje/prazna.png" class="star-image" [ngClass]="{'hidden': rating > i}">
+                                    <img src="assets/azuriranje/puna.png" class="star-image" [ngClass]="{'hidden': rating <= i}">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button (click)="azurirajCenu()">Oceni</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" [hidden]="!error">
+                            <p class="error-message">{{error}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>

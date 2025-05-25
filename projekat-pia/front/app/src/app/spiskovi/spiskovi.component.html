@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Vaša Bašta Vaša Mašta</h1>
+        <nav>
+            <ul>
+                <li><a href="/administrator">login</a></li>
+                <li><a href="/">home</a></li>
+                <li><a href="/spiskovi">spiskovi</a></li>
+                <li><a href="/admin2">zahtevi</a></li>
+                <li><a href="/dodavanje-dekoratera">dodavanje dekoratera</a></li>
+                <li><a href="/firma">dodavanje firmi</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <h1>Vlasnici</h1>
+            <table>
+                <tr>
+                    <th>
+                        Ime
+                    </th>
+                    <th>
+                        Prezime
+                    </th>
+                    <th>
+                        Imejl
+                    </th>
+                    <th>
+                        Azuriraj
+                    </th>
+                </tr>
+                <tr *ngFor="let vlasnik of vlasnici">
+                    <td>
+                        {{vlasnik.ime}}
+                    </td>
+                    <td>
+                        {{vlasnik.prezime}}
+                    </td>
+                    <td>
+                        {{vlasnik.imejl}}
+                    </td>
+                    <td>
+                        <button (click)="azurirajVlasnika(vlasnik.korisnicko_ime)">Klikni me</button>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="container">
+            <h1>Dekorateri</h1>
+                <table>
+                    <tr>
+                        <th>
+                            Ime
+                        </th>
+                        <th>
+                            Prezime
+                        </th>
+                        <th>
+                            Imejl
+                        </th>
+                        <th>
+                            Azuriraj
+                        </th>
+                    </tr>
+                    <tr *ngFor="let dekorater of dekorateri">
+                        <td>
+                            {{dekorater.ime}}
+                        </td>
+                        <td>
+                            {{dekorater.prezime}}
+                        </td>
+                        <td>
+                            {{dekorater.imejl}}
+                        </td>
+                        <td>
+                            <button (click)="azurirajDekoratera(dekorater.korisnicko_ime)">Klikni me</button>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Vaša bašta.Sva prava zadržana.</p>
+    </footer>
+    
+</body>
+

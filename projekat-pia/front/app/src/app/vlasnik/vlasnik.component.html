@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna Stranica</title>
+</head>
+
+<body>
+    <header>
+        <h1>Dobrodošli!</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/vlasnik">Profil</a></li>
+                <li><a href="/firme">Firme</a></li>
+                <li><a href="/zakazivanja">Zakazivanja</a></li>
+                <li><a href="/odrzavanje">Odrzavanja</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content">
+        <h2>Profil Vlasnika</h2>
+        <div class="container">
+            <table class="data-table">
+                <tr>
+                    <td>Ime:</td>
+                    <td>{{vlasnik.ime}}</td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td>{{vlasnik.prezime}}</td>
+                </tr>
+                <tr>
+                    <td>Mejl:</td>
+                    <td>{{vlasnik.imejl}}</td>
+                </tr>
+                <tr>
+                    <td>Kontakt:</td>
+                    <td>{{vlasnik.telefon}}</td>
+                </tr>
+                <tr>
+                    <td>Broj kartice:</td>
+                    <td>{{vlasnik.kartica}}</td>
+                </tr>
+                <tr>
+                    <td>Fotografija:</td>
+                    <td>
+                        <img [src]="getUserImageUrl(vlasnik.slika)" alt="Profilna slika korisnika" class="profile-image">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="container">
+            <h2>Promena podataka</h2>
+            <table class="data-table">
+                <tr>
+                    <td><input type="text" [(ngModel)]="ime" name="ime" placeholder="Novo ime"></td>
+                    <td><button class="action-button" (click)="promeniIme()">Promeni ime?</button></td>
+                </tr>
+                <tr>
+                    <td><input type="text" [(ngModel)]="prezime" name="prezime" placeholder="Novo prezime"></td>
+                    <td><button class="action-button" (click)="promeniPrezime()">Promeni prezime?</button></td>
+                </tr>
+                <tr>
+                    <td><input type="text" [(ngModel)]="imejl" name="imejl" placeholder="Novi imejl"></td>
+                    <td><button class="action-button" (click)="promeniMejl()">Promeni imejl?</button></td>
+                </tr>
+                <tr>
+                    <td><input type="text" [(ngModel)]="broj" name="broj" placeholder="Novi broj"></td>
+                    <td><button class="action-button" (click)="promeniBroj()">Promeni broj?</button></td>
+                </tr>
+                <tr>
+                    <td><input type="number" [(ngModel)]="kartica" name="kartica" placeholder="Nova kartica"></td>
+                    <td><button class="action-button" (click)="promeniKarticu()">Promeni karticu?</button></td>
+                </tr>
+                <tr *ngIf="error">
+                    <td colspan="2"><p class="error-message">{{error}}</p></td>
+                </tr>
+                <tr>
+                    <td><input type="file" name="profilna_slika" (change)="onFileSelected($event)" class="input-field"></td>
+                    <td><button class="action-button" (click)="promeniSliku()">Promeni sliku?</button></td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vaša bašta. Sva prava zadržana.</p>
+    </footer>
+</body>
+</html>
